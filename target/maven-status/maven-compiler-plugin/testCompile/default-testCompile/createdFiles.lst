@@ -1,0 +1,7 @@
+com\testcases\PutRequestTest.class
+com\testcases\DeleteRequestTest.class
+com\testcases\GetRequestTest.class
+com\testcases\PostRequestTest.class
+com\testcases\TestBase.class
+com\testcases\CreateStudentPojo.class
+com\testcases\PatchRequestTest.class
