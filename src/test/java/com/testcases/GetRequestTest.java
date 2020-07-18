@@ -1,10 +1,16 @@
 package com.testcases;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import com.oracle.webservices.internal.api.databinding.Databinding.Builder;
+
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.*;
 
@@ -12,6 +18,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GetRequestTest extends TestBase {
+	static RequestSpecBuilder builder;
+	static RequestSpecification rspec;
+
+	@BeforeAll
+	public static void builder() {
+		builder = new RequestSpecBuilder();
+		builder.addParam("programme", "Computer Science");
+		builder.addParam("limit", "2");
+		rspec = builder.build();
+
+	}
+
 	@DisplayName("Get All Students list")
 	@Test
 	public void validateGet() {
@@ -24,6 +42,16 @@ public class GetRequestTest extends TestBase {
 		Response response = given().queryParams("programme", "Computer Science", "limit", "2").when().get("/list");// .then().statusCode(200);
 		response.prettyPrint();
 
+	}
+
+	@DisplayName("Print Students with Build Params")
+	@Test
+	public void validateParamsUsingBuilder() {
+
+		// ResponseSpec can also be used to asset using expectHeader and expectBody
+
+		Response response = given().spec(rspec).when().get("/list");// .then().statusCode(200);
+		response.prettyPrint();
 	}
 
 	@DisplayName("Params using Maps")
