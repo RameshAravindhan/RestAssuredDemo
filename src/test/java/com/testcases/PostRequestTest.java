@@ -20,7 +20,7 @@ public class PostRequestTest extends TestBase {
 	 * "{\"firstName\":\"Aravind\",\"lastName\":\"Harper\",\"email\":\"aravind@massaQuisqueporttitor.org\",\"programme\":\"Financial Analysis\","
 	 * + "\"courses\":[\"Accounting\",\"Statistics\"]}";
 	 * given().when().contentType(ContentType.JSON).when().body(payload).post().then
-	 * ().statusCode(201); }
+	 * ().statusCode(201);  }
 	 */
 
 	@Test

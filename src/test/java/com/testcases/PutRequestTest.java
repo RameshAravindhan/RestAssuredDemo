@@ -30,7 +30,7 @@ public class PutRequestTest extends TestBase {
 		Response getResponse = given().when().get("/75");
 		System.out.println("BEFORE UPDATE--------");
 		getResponse.prettyPrint();
-		given().when().contentType(ContentType.JSON).body(student).when().put("/75").statusCode();
+		given().when().contentType(ContentType.JSON).body(student).when().put("/75").then().log().status();
 		Response updatedResponse = given().when().get("/75");
 		System.out.println("--------------------------------------------------------------------------------");
 		System.out.println("AFTER UPDATE--------");
